@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace TrackDesigner;
+namespace TrackDesigner.Util;
 
 /// <summary>
 /// Provides a new way to define the property name by using lambda expressions.
