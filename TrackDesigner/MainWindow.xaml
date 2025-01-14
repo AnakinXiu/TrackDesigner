@@ -1,0 +1,60 @@
+﻿<RibbonWindow x:Class="TrackDesigner.MainWindow"
+                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                         xmlns:trackDesigner="clr-namespace:TrackDesigner"
+                         Title="Track Designer"
+                         x:Name="RibbonWindow"
+                         Width="800" Height="640"
+                         >
+
+    <RibbonWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Asset/Resources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </RibbonWindow.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>
+    <Ribbon Grid.Row="0" Grid.ColumnSpan="1" >
+
+        <Ribbon.ApplicationMenu>
+            <RibbonApplicationMenu>
+                <RibbonApplicationMenuItem Header="File"/>
+                <RibbonSeparator/>
+                <RibbonApplicationSplitMenuItem/>
+
+                    <RibbonApplicationMenuItem Header="File"/>
+            </RibbonApplicationMenu>
+        </Ribbon.ApplicationMenu>
+
+            <RibbonTab Header="djafoij" >
+                <RibbonGroup Header="Group1">
+                    <RibbonButton Label="Button1">
+                        <RibbonButton.LargeImageSource>
+                            <DrawingImage Drawing="{StaticResource NewFile}"/>
+                        </RibbonButton.LargeImageSource>
+                    </RibbonButton>
+                        
+                </RibbonGroup>
+
+                <RibbonGroup Header="Group1">
+                    <RibbonTwoLineText TextAlignment="Left" HorizontalAlignment="Left" Text="faiodddgsadg"/>
+                    <RibbonTextBox HorizontalAlignment="Right"/>
+                </RibbonGroup>
+            </RibbonTab>
+
+        </Ribbon>
+
+        <Canvas Grid.Row="1" x:Name="MainView" 
+                Background="SeaShell">
+            
+        </Canvas>
+    </Grid>
+</RibbonWindow>
