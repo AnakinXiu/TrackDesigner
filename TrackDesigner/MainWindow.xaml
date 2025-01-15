@@ -52,9 +52,12 @@
 
         </Ribbon>
 
-        <Canvas Grid.Row="1" x:Name="MainView" 
-                Background="SeaShell">
+        <trackDesigner:GridCanvas Grid.Row="1" x:Name="MainView" 
+                    Background="SeaShell">
+            <trackDesigner:GridCanvas.Children>
+                <Rectangle Width="60" Height="80" Fill="BurlyWood" RadiusX="60" RadiusY="50"/>
+            </trackDesigner:GridCanvas.Children>
             
-        </Canvas>
+        </trackDesigner:GridCanvas>
     </Grid>
 </RibbonWindow>
