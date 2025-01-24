@@ -56,6 +56,7 @@
                     Background="SeaShell">
             <trackDesigner:GridCanvas.Children>
                 <Rectangle Width="60" Height="80" Fill="BurlyWood" RadiusX="60" RadiusY="50"/>
+
             </trackDesigner:GridCanvas.Children>
             
         </trackDesigner:GridCanvas>

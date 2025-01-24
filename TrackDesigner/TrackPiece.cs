@@ -1,11 +1,15 @@
 ﻿using System.Globalization;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace TrackDesigner;
 
-public class TrackPiece : FrameworkElement
+[TemplatePart(Name = "Part_Border", Type = typeof(Border))]
+[TemplatePart(Name = "Part_Path", Type = typeof(Path))]
+public class TrackPiece : Control
 {
     public Point Location { get; set; }
 
