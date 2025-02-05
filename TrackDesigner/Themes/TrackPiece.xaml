@@ -6,8 +6,7 @@
             <Setter.Value>
                 <ControlTemplate>
                     <Border x:Name="Part_Border">
-                        <Path Name="Part_Path" Data="{TemplateBinding}">
-                        </Path>
+                        <Path Name="Part_Path" Data="{TemplateBinding}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
