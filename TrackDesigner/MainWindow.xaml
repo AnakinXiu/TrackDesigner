@@ -21,9 +21,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-        </Grid.ColumnDefinitions>
-    <Ribbon Grid.Row="0" Grid.ColumnSpan="1" >
+        <Ribbon Grid.Row="0" Grid.ColumnSpan="1" >
 
         <Ribbon.ApplicationMenu>
             <RibbonApplicationMenu>

@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -27,6 +26,16 @@ public class TrackPiece : Control
     public static readonly DependencyProperty PathProperty = DependencyProperty.Register(
         nameof(Path), typeof(Geometry), typeof(TrackPiece),
         new FrameworkPropertyMetadata(default(Geometry), FrameworkPropertyMetadataOptions.AffectsRender));
+
+    public DrawingImage DrawingImage
+    {
+        get => (DrawingImage)GetValue(DrawingImageProperty);
+        set => SetValue(DrawingImageProperty, value);
+    }
+
+    public static readonly DependencyProperty DrawingImageProperty = DependencyProperty.Register(
+        nameof(DrawingImage), typeof(DrawingImage), typeof(TrackPiece),
+        new FrameworkPropertyMetadata(default(DrawingImage), FrameworkPropertyMetadataOptions.AffectsRender));
 
     /*protected override void OnRender(DrawingContext drawingContext)
     {

@@ -1,6 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:trackDesigner="clr-namespace:TrackDesigner">
+<ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary>
+        <RotateTransform x:Key="FlipOverTransform" Angle="180" CenterX="49" CenterY="49"/>
+    </ResourceDictionary>
+</ResourceDictionary.MergedDictionaries>
+
     <Style x:Key="TrackPieceStyle" TargetType="{x:Type trackDesigner:TrackPiece}">
         <Setter Property="Template">
             <Setter.Value>
@@ -9,13 +15,16 @@
                             Background="White" 
                             BorderBrush="DarkGray"
                             BorderThickness="1">
-                        <Path Name="Part_Path" 
+                        <!-- Path Name="Part_Path" 
                               Stretch="Uniform" 
                               ClipToBounds="True" 
                               Stroke="DarkGray" 
                               StrokeThickness="2"
-                              Data="{TemplateBinding Path}"/>
-                    </Border>
+                              Data="{TemplateBinding Path}"/-->
+
+                        <Image Source="{TemplateBinding DrawingImage}"
+                               RenderTransform="{StaticResource FlipOverTransform}"/>
+                    </Border> 
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

@@ -31,6 +31,7 @@ namespace TrackDesigner
             var minus = Geometry.Parse(pathMinus);
             
             var viewModel = DataContext as MainFormViewModel;
+            var image = FindResource("SvgDrawingImage") as DrawingImage;
             for (var i = 0; i < viewModel?.HorizontalPieceCount; i++)
             {
                 for (var j = 0; j < viewModel?.VerticalPieceCount; j++)
@@ -39,7 +40,8 @@ namespace TrackDesigner
                     {
                         Width = 100,
                         Height = 100,
-                        Path = (i+j) % 2 == 0 ? plus : minus
+                        Path = (i+j) % 2 == 0 ? plus : minus,
+                        DrawingImage = image
                     };
 
                     MainView.Children.Add(customShape);
