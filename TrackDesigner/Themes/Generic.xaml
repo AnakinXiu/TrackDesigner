@@ -6,5 +6,5 @@
         <ResourceDictionary Source="TrackPiece.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style BasedOn="{StaticResource TrackPieceStyle}" TargetType="trackDesigner:TrackPiece"/>
+    <Style BasedOn="{StaticResource TrackPieceStyle}" TargetType="{x:Type trackDesigner:TrackPiece}"/>
 </ResourceDictionary>

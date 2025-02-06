@@ -1,12 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:trackDesigner="clr-namespace:TrackDesigner">
-    <Style x:Key="TrackPieceStyle" TargetType="trackDesigner:TrackPiece">
+    <Style x:Key="TrackPieceStyle" TargetType="{x:Type trackDesigner:TrackPiece}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate>
-                    <Border x:Name="Part_Border">
-                        <Path Name="Part_Path" Data="{TemplateBinding}"/>
+                <ControlTemplate TargetType="{x:Type trackDesigner:TrackPiece}">
+                    <Border x:Name="Part_Border" Background="BurlyWood">
+                        <Path Name="Part_Path" Data="{TemplateBinding Path}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

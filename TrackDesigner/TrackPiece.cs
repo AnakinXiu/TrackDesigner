@@ -11,11 +11,28 @@ namespace TrackDesigner;
 [TemplatePart(Name = "Part_Path", Type = typeof(Path))]
 public class TrackPiece : Control
 {
+    static TrackPiece()
+    {
+        // Override the default style
+        DefaultStyleKeyProperty.OverrideMetadata(typeof(TrackPiece),
+            new FrameworkPropertyMetadata(typeof(TrackPiece)));
+    }
+
     public Point Location { get; set; }
 
     public IPieceRender PieceRender { get; set; }
 
-    protected override void OnRender(DrawingContext drawingContext)
+    public Geometry Path
+    {
+        get => (Geometry)GetValue(PathProperty);
+        set => SetValue(PathProperty, value);
+    }
+
+    public static readonly DependencyProperty PathProperty = DependencyProperty.Register(
+        nameof(Path), typeof(Geometry), typeof(TrackPiece),
+        new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.AffectsRender));
+
+    /*protected override void OnRender(DrawingContext drawingContext)
     {
         base.OnRender(drawingContext);
 
@@ -34,7 +51,7 @@ public class TrackPiece : Control
                 new Point(10, 10));
 
         drawingContext.Pop();
-    }
+    }*/
 
     public Stack<string> MouseState = new(3);
 

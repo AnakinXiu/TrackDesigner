@@ -58,7 +58,6 @@
 
         <trackDesigner:GridCanvas Grid.Row="1" x:Name="MainView" 
                     Background="SeaShell">
-
         </trackDesigner:GridCanvas>
     </Grid>
 </RibbonWindow>
