@@ -30,7 +30,7 @@ public class TrackPiece : Control
 
     public static readonly DependencyProperty PathProperty = DependencyProperty.Register(
         nameof(Path), typeof(Geometry), typeof(TrackPiece),
-        new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.AffectsRender));
+        new FrameworkPropertyMetadata(default(Geometry), FrameworkPropertyMetadataOptions.AffectsRender));
 
     /*protected override void OnRender(DrawingContext drawingContext)
     {
