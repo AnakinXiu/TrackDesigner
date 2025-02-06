@@ -15,12 +15,6 @@
                             Background="White" 
                             BorderBrush="DarkGray"
                             BorderThickness="1">
-                        <!-- Path Name="Part_Path" 
-                              Stretch="Uniform" 
-                              ClipToBounds="True" 
-                              Stroke="DarkGray" 
-                              StrokeThickness="2"
-                              Data="{TemplateBinding Path}"/-->
 
                         <Image Source="{TemplateBinding DrawingImage}"
                                RenderTransform="{StaticResource FlipOverTransform}"/>

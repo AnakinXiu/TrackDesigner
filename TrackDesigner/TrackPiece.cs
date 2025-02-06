@@ -2,12 +2,10 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace TrackDesigner;
 
 [TemplatePart(Name = "Part_Border", Type = typeof(Border))]
-[TemplatePart(Name = "Part_Path", Type = typeof(Path))]
 public class TrackPiece : Control
 {
     static TrackPiece()
@@ -16,16 +14,6 @@ public class TrackPiece : Control
         DefaultStyleKeyProperty.OverrideMetadata(typeof(TrackPiece),
             new FrameworkPropertyMetadata(typeof(TrackPiece)));
     }
-
-    public Geometry Path
-    {
-        get => (Geometry)GetValue(PathProperty);
-        set => SetValue(PathProperty, value);
-    }
-
-    public static readonly DependencyProperty PathProperty = DependencyProperty.Register(
-        nameof(Path), typeof(Geometry), typeof(TrackPiece),
-        new FrameworkPropertyMetadata(default(Geometry), FrameworkPropertyMetadataOptions.AffectsRender));
 
     public DrawingImage DrawingImage
     {
