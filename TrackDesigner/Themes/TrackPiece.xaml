@@ -5,8 +5,16 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type trackDesigner:TrackPiece}">
-                    <Border x:Name="Part_Border" Background="BurlyWood">
-                        <Path Name="Part_Path" Data="{TemplateBinding Path}"/>
+                    <Border x:Name="Part_Border" 
+                            Background="White" 
+                            BorderBrush="DarkGray"
+                            BorderThickness="1">
+                        <Path Name="Part_Path" 
+                              Stretch="Uniform" 
+                              ClipToBounds="True" 
+                              Stroke="DarkGray" 
+                              StrokeThickness="2"
+                              Data="{TemplateBinding Path}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

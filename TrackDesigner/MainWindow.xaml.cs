@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Controls.Ribbon;
 using System.Windows.Media;
 
@@ -28,7 +29,7 @@ namespace TrackDesigner
 
             var plus = Geometry.Parse(pathPlus);
             var minus = Geometry.Parse(pathMinus);
-
+            
             var viewModel = DataContext as MainFormViewModel;
             for (var i = 0; i < viewModel?.HorizontalPieceCount; i++)
             {
@@ -36,13 +37,15 @@ namespace TrackDesigner
                 {
                     var customShape = new TrackPiece
                     {
-                        Location = new Point(i * 100, j * 100),
                         Width = 100,
                         Height = 100,
                         Path = (i+j) % 2 == 0 ? plus : minus
                     };
 
                     MainView.Children.Add(customShape);
+
+                    Canvas.SetLeft(customShape, i * 100);
+                    Canvas.SetTop(customShape, j * 100);
                 }
             }
         }
