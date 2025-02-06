@@ -18,10 +18,6 @@ public class TrackPiece : Control
             new FrameworkPropertyMetadata(typeof(TrackPiece)));
     }
 
-    public Point Location { get; set; }
-
-    public IPieceRender PieceRender { get; set; }
-
     public Geometry Path
     {
         get => (Geometry)GetValue(PathProperty);
