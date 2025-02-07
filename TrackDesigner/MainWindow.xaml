@@ -4,9 +4,14 @@
                          xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                          xmlns:trackDesigner="clr-namespace:TrackDesigner"
                          xmlns:converter="clr-namespace:TrackDesigner.Converter"
+                         xmlns:controls="clr-namespace:TrackDesigner.Controls"
                          Title="Track Designer"
                          x:Name="RibbonWindow"
                          Width="800" Height="640">
+
+    <RibbonWindow.DataContext>
+        <trackDesigner:MainFormViewModel/>
+    </RibbonWindow.DataContext>
 
     <RibbonWindow.Resources>
         <ResourceDictionary>
@@ -54,8 +59,31 @@
 
         </Ribbon>
 
-        <trackDesigner:GridCanvas Grid.Row="1" x:Name="MainView" 
-                    Background="SeaShell">
-        </trackDesigner:GridCanvas>
+        <ItemsControl Grid.Row="1" x:Name="MainView" 
+                    Background="SeaShell"
+                    ItemsSource="{Binding TrackPieces}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Canvas.Left" Value="{Binding X}"/>
+                    <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <controls:TrackPieceControl Width="{Binding Size.Width}"
+                                                Height="{Binding Size.Height}"
+                                                DrawingImage="{Binding DrawingImage}"
+                                                RotateTransform="{Binding Rotate, Mode=OneWay}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+
+        </ItemsControl>
     </Grid>
 </RibbonWindow>
