@@ -6,13 +6,13 @@ using System.Windows.Media;
 namespace TrackDesigner.Controls;
 
 [TemplatePart(Name = "Part_Border", Type = typeof(Border))]
-public class TrackPiece : Control
+public class TrackPieceControl : Control
 {
-    static TrackPiece()
+    static TrackPieceControl()
     {
         // Override the default style
-        DefaultStyleKeyProperty.OverrideMetadata(typeof(TrackPiece),
-            new FrameworkPropertyMetadata(typeof(TrackPiece)));
+        DefaultStyleKeyProperty.OverrideMetadata(typeof(TrackPieceControl),
+            new FrameworkPropertyMetadata(typeof(TrackPieceControl)));
     }
 
     public DrawingImage DrawingImage
@@ -22,7 +22,7 @@ public class TrackPiece : Control
     }
 
     public static readonly DependencyProperty DrawingImageProperty = DependencyProperty.Register(
-        nameof(DrawingImage), typeof(DrawingImage), typeof(TrackPiece),
+        nameof(DrawingImage), typeof(DrawingImage), typeof(TrackPieceControl),
         new FrameworkPropertyMetadata(default(DrawingImage), FrameworkPropertyMetadataOptions.AffectsRender));
 
     /*protected override void OnRender(DrawingContext drawingContext)

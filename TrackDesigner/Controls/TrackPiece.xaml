@@ -7,10 +7,10 @@
     </ResourceDictionary>
 </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="TrackPieceStyle" TargetType="{x:Type controls:TrackPiece}">
+    <Style x:Key="TrackPieceStyle" TargetType="{x:Type controls:TrackPieceControl}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:TrackPiece}">
+                <ControlTemplate TargetType="{x:Type controls:TrackPieceControl}">
                     <Border x:Name="Part_Border" 
                             Background="White" 
                             BorderBrush="DarkGray"
