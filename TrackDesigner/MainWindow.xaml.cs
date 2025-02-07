@@ -1,6 +1,8 @@
-﻿using System.Runtime.CompilerServices;
-using System.Windows;
+﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Controls.Ribbon;
+using System.Windows.Media;
+using TrackDesigner.Controls;
 
 namespace TrackDesigner
 {
@@ -13,13 +15,38 @@ namespace TrackDesigner
         {
             InitializeComponent();
 
-            var customShape = new TrackPiece
+            var viewModel = new MainFormViewModel();
+            viewModel.PropertyChanged += OnViewModelPropertyChanged;
+            DataContext = viewModel;
+        }
+
+        private void OnViewModelPropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName is not (nameof(MainFormViewModel.HorizontalPieceCount)
+                or nameof(MainFormViewModel.VerticalPieceCount))) 
+                return;
+
+            MainView.Children.Clear();
+
+            var viewModel = DataContext as MainFormViewModel;
+            var image = FindResource("SvgDrawingImage") as DrawingImage;
+            for (var i = 0; i < viewModel?.HorizontalPieceCount; i++)
             {
-                Location = new Point(100, 100),
-                Width = 100,
-                Height = 100
-            };
-            MainView.Children.Add(customShape);
+                for (var j = 0; j < viewModel?.VerticalPieceCount; j++)
+                {
+                    var customShape = new TrackPiece
+                    {
+                        Width = 100,
+                        Height = 100,
+                        DrawingImage = image
+                    };
+
+                    MainView.Children.Add(customShape);
+
+                    Canvas.SetLeft(customShape, i * 100);
+                    Canvas.SetTop(customShape, j * 100);
+                }
+            }
         }
     }
 }

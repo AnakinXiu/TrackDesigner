@@ -3,16 +3,17 @@
                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                          xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                          xmlns:trackDesigner="clr-namespace:TrackDesigner"
+                         xmlns:converter="clr-namespace:TrackDesigner.Converter"
                          Title="Track Designer"
                          x:Name="RibbonWindow"
-                         Width="800" Height="640"
-                         >
+                         Width="800" Height="640">
 
     <RibbonWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Asset/Resources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <converter:IntToStringConverter x:Key="IntToStringConverter" />
         </ResourceDictionary>
     </RibbonWindow.Resources>
     <Grid>
@@ -20,9 +21,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-        </Grid.ColumnDefinitions>
-    <Ribbon Grid.Row="0" Grid.ColumnSpan="1" >
+        <Ribbon Grid.Row="0" Grid.ColumnSpan="1" >
 
         <Ribbon.ApplicationMenu>
             <RibbonApplicationMenu>
@@ -46,15 +45,17 @@
 
                 <RibbonGroup Header="Group1">
                     <RibbonTwoLineText TextAlignment="Left" HorizontalAlignment="Left" Text="faiodddgsadg"/>
-                    <RibbonTextBox HorizontalAlignment="Right"/>
+                    <RibbonTextBox Text="{Binding HorizontalPieceCount, Converter={StaticResource IntToStringConverter}}" 
+                                   HorizontalAlignment="Right"/>
+                    <RibbonTextBox Text="{Binding VerticalPieceCount,Converter={StaticResource IntToStringConverter}}" 
+                                   HorizontalAlignment="Right"/>
                 </RibbonGroup>
             </RibbonTab>
 
         </Ribbon>
 
-        <Canvas Grid.Row="1" x:Name="MainView" 
-                Background="SeaShell">
-            
-        </Canvas>
+        <trackDesigner:GridCanvas Grid.Row="1" x:Name="MainView" 
+                    Background="SeaShell">
+        </trackDesigner:GridCanvas>
     </Grid>
 </RibbonWindow>

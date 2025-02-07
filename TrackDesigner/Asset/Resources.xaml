@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <DrawingGroup x:Key="NewFile" 
-                          ClipGeometry="M0,0 V502 H502 V0 H0 Z">
+                  ClipGeometry="M0,0 V502 H502 V0 H0 Z">
         <DrawingGroup Opacity="1">
             <DrawingGroup Opacity="1">
                 <GeometryDrawing Brush="#FF000000" Geometry="F1 M502,502z M0,0z M405.889,348.576L405.889,105.273C405.889,102.621,404.835,100.077,402.96,98.202L307.688,2.929C305.812,1.054,303.269,0,300.617,0L70.783,0C65.26,0,60.783,4.477,60.783,10L60.783,455.916C60.783,461.439,65.26,465.916,70.783,465.916L287.225,465.916C303.083,488.611 328.615,502 356.57,502 403.244,502 441.216,464.028 441.216,417.354 441.217,389.827 428.102,364.485 405.889,348.576z M80.783,20L296.474,20 372.632,96.158 321.481,96.158C315.959,96.158 311.481,100.635 311.481,106.158 311.481,111.681 315.959,116.158 321.481,116.158L385.889,116.158 385.889,337.947C376.555,334.496 366.642,332.706 356.57,332.706 309.895,332.706 271.923,370.679 271.923,417.353 271.923,427.146 273.615,436.803 276.878,445.915L80.783,445.915 80.783,20z M356.57,482C333.804,482 313.14,470.371 301.293,450.893 295.163,440.816 291.923,429.218 291.923,417.354 291.923,381.708 320.924,352.707 356.57,352.707 368.355,352.707 379.85,355.917 389.904,361.985 390.378,362.34 390.883,362.655 391.417,362.923 410.085,374.898 421.216,395.201 421.216,417.354 421.217,453 392.217,482 356.57,482z" />
@@ -10,4 +10,29 @@
             </DrawingGroup>
         </DrawingGroup>
     </DrawingGroup>
+
+    <DrawingImage x:Key="SvgDrawingImage">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V600 H600 V0 H0 Z">
+                <DrawingGroup Opacity="1">
+                    <GeometryDrawing Brush="#FFC43535">
+                        <GeometryDrawing.Pen>
+                            <Pen Brush="#FF000000" Thickness="1" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+                        </GeometryDrawing.Pen>
+                        <GeometryDrawing.Geometry>
+                            <EllipseGeometry RadiusX="550" RadiusY="550" Center="598,600.5" />
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FF1E1E1E">
+                        <GeometryDrawing.Pen>
+                            <Pen Brush="#FF000000" Thickness="2" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+                        </GeometryDrawing.Pen>
+                        <GeometryDrawing.Geometry>
+                            <EllipseGeometry RadiusX="500" RadiusY="500" Center="599.5,600.5" />
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
 </ResourceDictionary>
