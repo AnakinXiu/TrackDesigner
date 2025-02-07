@@ -17,7 +17,7 @@
                             BorderThickness="1">
 
                         <Image Source="{TemplateBinding DrawingImage}"
-                               RenderTransform="{StaticResource FlipOverTransform}"/>
+                               RenderTransform="{TemplateBinding RotateTransform}"/>
                     </Border> 
                 </ControlTemplate>
             </Setter.Value>

@@ -3,8 +3,8 @@
                     xmlns:controls="clr-namespace:TrackDesigner.Controls">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/TrackDesigner;component/Controls/TrackPiece.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/TrackDesigner;component/Controls/TrackPieceTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style BasedOn="{StaticResource TrackPieceStyle}" TargetType="controls:TrackPiece"/>
+    <Style BasedOn="{StaticResource TrackPieceStyle}" TargetType="controls:TrackPieceControl"/>
 </ResourceDictionary>
