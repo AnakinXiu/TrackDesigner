@@ -34,7 +34,7 @@ namespace TrackDesigner
             {
                 for (var j = 0; j < viewModel?.VerticalPieceCount; j++)
                 {
-                    var customShape = new TrackPiece
+                    var customShape = new TrackPieceControl
                     {
                         Width = 100,
                         Height = 100,
