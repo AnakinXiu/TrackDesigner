@@ -1,15 +1,12 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Ribbon;
 using System.Windows.Media;
-using TrackDesigner.Controls;
 
 namespace TrackDesigner
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : RibbonWindow
+    public partial class MainWindow
     {
         public MainWindow()
         {
@@ -26,25 +23,25 @@ namespace TrackDesigner
                 or nameof(MainFormViewModel.VerticalPieceCount))) 
                 return;
 
-            MainView.Children.Clear();
+            if (DataContext is not MainFormViewModel viewModel)
+                return;
 
-            var viewModel = DataContext as MainFormViewModel;
+            viewModel.TrackPieces.Clear();
+
             var image = FindResource("SvgDrawingImage") as DrawingImage;
             for (var i = 0; i < viewModel?.HorizontalPieceCount; i++)
             {
                 for (var j = 0; j < viewModel?.VerticalPieceCount; j++)
                 {
-                    var customShape = new TrackPieceControl
+                    var customShape = new TrackPiece
                     {
-                        Width = 100,
-                        Height = 100,
+                        X = i * 100, 
+                        Y = j * 100,
+                        Size = new Size(100, 100),
                         DrawingImage = image
                     };
 
-                    MainView.Children.Add(customShape);
-
-                    Canvas.SetLeft(customShape, i * 100);
-                    Canvas.SetTop(customShape, j * 100);
+                    viewModel.TrackPieces.Add(customShape);
                 }
             }
         }
