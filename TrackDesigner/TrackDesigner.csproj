@@ -9,4 +9,8 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Fluent.Ribbon" Version="11.0.0-rc0292" />
+  </ItemGroup>
+
 </Project>
