@@ -4,7 +4,13 @@
              xmlns:local="clr-namespace:TrackDesigner"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Fluent;Component/Themes/Generic.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Fluent;component/Themes/Themes/Dark.Amber.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
         <!-- Attach default Theme -->
-        <ResourceDictionary Source="pack://application:,,,/Fluent;Component/Themes/Generic.xaml" />
+        
     </Application.Resources>
 </Application>

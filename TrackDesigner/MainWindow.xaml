@@ -20,43 +20,14 @@
             <converter:IntToStringConverter x:Key="IntToStringConverter" />
         </ResourceDictionary>
     </fluent:RibbonWindow.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <fluent:Ribbon  Grid.Row="0" Grid.ColumnSpan="1">
-            <fluent:Ribbon.Menu>
-                <RibbonApplicationMenu>
-                    <RibbonApplicationMenuItem Header="File"/>
-                    <RibbonSeparator/>
-                    <RibbonApplicationSplitMenuItem/>
-
-                    <RibbonApplicationMenuItem Header="File"/>
-                </RibbonApplicationMenu>
-            </fluent:Ribbon.Menu>
-
-            <RibbonTab Header="File" >
-                <RibbonGroup Header="Projects">
-                    <RibbonButton Label="Button1">
-                        <RibbonButton.LargeImageSource>
-                            <DrawingImage Drawing="{StaticResource NewFile}"/>
-                        </RibbonButton.LargeImageSource>
-                    </RibbonButton>
-
-                </RibbonGroup>
-
-                <RibbonGroup Header="Design">
-                    <RibbonTwoLineText TextAlignment="Left" HorizontalAlignment="Left" Text="Track Size"/>
-                    <RibbonTextBox Text="{Binding HorizontalPieceCount, Converter={StaticResource IntToStringConverter}}" 
-                                   HorizontalAlignment="Right"/>
-                    <RibbonTextBox Text="{Binding VerticalPieceCount,Converter={StaticResource IntToStringConverter}}" 
-                                   HorizontalAlignment="Right"/>
-                </RibbonGroup>
-            </RibbonTab>
-        </fluent:Ribbon>
-
+        <controls:Ribbon Grid.Row="0"/>
 
         <ItemsControl Grid.Row="1" x:Name="MainView" 
                     Background="SeaShell"
