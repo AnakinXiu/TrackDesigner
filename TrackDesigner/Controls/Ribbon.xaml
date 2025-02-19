@@ -21,10 +21,23 @@
         <fluent:Ribbon.Menu>
             <fluent:Backstage Header="Project">
                 <fluent:BackstageTabControl>
-                    <fluent:BackstageTabItem Header="New" />
-                    <fluent:BackstageTabItem Header="Print" />
-                    <fluent:Button Header="Blue" />
+                    <fluent:Button Header="New Design" />
+                    <fluent:Button Header="Open Design"/>
+                    <fluent:Button Header="Save As" />
+                    <fluent:BackstageTabItem Header="Export" >
+                        <fluent:BackstageTabItem Header="Export to image" />
+                    </fluent:BackstageTabItem>
+                    <fluent:Button Header="Print" />
+                    <fluent:BackstageTabItem Header="About" >
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="About Track Design"/>
+                            <TextBlock Text="Track Design Version 0.1.0"/>
+                            <TextBlock Text="@Ze.Xiu@Foxmail.com"/>
+                        </StackPanel>
+                    </fluent:BackstageTabItem>
+                    <fluent:Button Header="Exit" />
                 </fluent:BackstageTabControl>
+
             </fluent:Backstage>
         </fluent:Ribbon.Menu>
 
@@ -61,6 +74,10 @@
                 </Grid>
 
             </fluent:RibbonGroupBox>
+        </fluent:RibbonTabItem>
+
+        <fluent:RibbonTabItem Header="View" >
+
         </fluent:RibbonTabItem>
     </fluent:Ribbon>
 </UserControl>
