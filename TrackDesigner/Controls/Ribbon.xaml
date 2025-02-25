@@ -27,6 +27,11 @@
         <fluent:Ribbon.Menu>
             <fluent:Backstage Header="File">
                 <fluent:BackstageTabControl>
+                    
+                    <fluent:BackstageTabItem Header="Home" >
+                        <controls:RibbonHomePage/>
+                    </fluent:BackstageTabItem>
+
                     <fluent:Button Header="New Design" Command="{Binding NewDesignCommand}"/>
                     <fluent:Button Header="Open Design" Command="{Binding OpenDesignCommand}"/>
                     <fluent:Button Header="Save" Command="{Binding SaveDesignCommand}"/>
