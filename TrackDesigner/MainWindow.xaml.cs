@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Media;
+using TrackDesigner.ViewModels;
 
 namespace TrackDesigner
 {

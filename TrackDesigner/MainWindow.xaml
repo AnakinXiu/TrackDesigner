@@ -5,11 +5,12 @@
                      xmlns:converter="clr-namespace:TrackDesigner.Converter"
                      xmlns:controls="clr-namespace:TrackDesigner.Controls"
                      xmlns:fluent="urn:fluent-ribbon"
+                     xmlns:viewModels="clr-namespace:TrackDesigner.ViewModels"
                      Title="Track Designer"
                      Width="800" Height="640">
 
     <fluent:RibbonWindow.DataContext>
-        <trackDesigner:MainFormViewModel/>
+        <viewModels:MainFormViewModel/>
     </fluent:RibbonWindow.DataContext>
 
     <fluent:RibbonWindow.Resources>
@@ -27,7 +28,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <controls:Ribbon Grid.Row="0"/>
+        <controls:Ribbon Grid.Row="0" DataContext="{Binding RibbonViewModel}"/>
 
         <ItemsControl Grid.Row="1" x:Name="MainView" 
                     Background="SeaShell"

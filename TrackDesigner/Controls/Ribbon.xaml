@@ -5,8 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:converter="clr-namespace:TrackDesigner.Converter"
              xmlns:fluent="urn:fluent-ribbon"
+             xmlns:viewModels="clr-namespace:TrackDesigner.ViewModels"
+             xmlns:controls="clr-namespace:TrackDesigner.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <viewModels:RibbonViewModel/>
+    </UserControl.DataContext>
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -19,23 +25,25 @@
     <fluent:Ribbon>
 
         <fluent:Ribbon.Menu>
-            <fluent:Backstage Header="Project">
+            <fluent:Backstage Header="File">
                 <fluent:BackstageTabControl>
-                    <fluent:Button Header="New Design" />
-                    <fluent:Button Header="Open Design"/>
-                    <fluent:Button Header="Save As" />
-                    <fluent:BackstageTabItem Header="Export" >
+                    <fluent:Button Header="New Design" Command="{Binding NewDesignCommand}"/>
+                    <fluent:Button Header="Open Design" Command="{Binding OpenDesignCommand}"/>
+                    <fluent:Button Header="Save" Command="{Binding SaveDesignCommand}"/>
+                    <fluent:Button Header="Save As" Command="{Binding SaveAsCommand}"/>
+
+                    <fluent:Backstage>
                         <fluent:BackstageTabItem Header="Export to image" />
-                    </fluent:BackstageTabItem>
-                    <fluent:Button Header="Print" />
+                    </fluent:Backstage>
+                    <fluent:Button Header="Print" Command="{Binding PrintCommand }"/>
+                    
                     <fluent:BackstageTabItem Header="About" >
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock Text="About Track Design"/>
-                            <TextBlock Text="Track Design Version 0.1.0"/>
-                            <TextBlock Text="@Ze.Xiu@Foxmail.com"/>
-                        </StackPanel>
+                        <controls:AboutPage/>
                     </fluent:BackstageTabItem>
-                    <fluent:Button Header="Exit" />
+
+                    <fluent:Button Header="Exit" 
+                                   Command="{Binding ExitCommand}"
+                                   CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
                 </fluent:BackstageTabControl>
 
             </fluent:Backstage>
