@@ -1,61 +1,34 @@
-﻿<RibbonWindow x:Class="TrackDesigner.MainWindow"
-                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                         xmlns:trackDesigner="clr-namespace:TrackDesigner"
-                         xmlns:converter="clr-namespace:TrackDesigner.Converter"
-                         xmlns:controls="clr-namespace:TrackDesigner.Controls"
-                         Title="Track Designer"
-                         Width="800" Height="640">
+﻿<fluent:RibbonWindow x:Class="TrackDesigner.MainWindow"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:trackDesigner="clr-namespace:TrackDesigner"
+                     xmlns:converter="clr-namespace:TrackDesigner.Converter"
+                     xmlns:controls="clr-namespace:TrackDesigner.Controls"
+                     xmlns:fluent="urn:fluent-ribbon"
+                     xmlns:viewModels="clr-namespace:TrackDesigner.ViewModels"
+                     Title="Track Designer"
+                     Width="800" Height="640">
 
-    <RibbonWindow.DataContext>
-        <trackDesigner:MainFormViewModel/>
-    </RibbonWindow.DataContext>
+    <fluent:RibbonWindow.DataContext>
+        <viewModels:MainFormViewModel/>
+    </fluent:RibbonWindow.DataContext>
 
-    <RibbonWindow.Resources>
+    <fluent:RibbonWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Asset/Resources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <converter:IntToStringConverter x:Key="IntToStringConverter" />
         </ResourceDictionary>
-    </RibbonWindow.Resources>
+    </fluent:RibbonWindow.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Ribbon Grid.Row="0" Grid.ColumnSpan="1" >
 
-        <Ribbon.ApplicationMenu>
-            <RibbonApplicationMenu>
-                <RibbonApplicationMenuItem Header="File"/>
-                <RibbonSeparator/>
-                <RibbonApplicationSplitMenuItem/>
-
-                    <RibbonApplicationMenuItem Header="File"/>
-            </RibbonApplicationMenu>
-        </Ribbon.ApplicationMenu>
-
-            <RibbonTab Header="File" >
-                <RibbonGroup Header="Projects">
-                    <RibbonButton Label="Button1">
-                        <RibbonButton.LargeImageSource>
-                            <DrawingImage Drawing="{StaticResource NewFile}"/>
-                        </RibbonButton.LargeImageSource>
-                    </RibbonButton>
-                        
-                </RibbonGroup>
-
-                <RibbonGroup Header="Design">
-                    <RibbonTwoLineText TextAlignment="Left" HorizontalAlignment="Left" Text="Track Size"/>
-                    <RibbonTextBox Text="{Binding HorizontalPieceCount, Converter={StaticResource IntToStringConverter}}" 
-                                   HorizontalAlignment="Right"/>
-                    <RibbonTextBox Text="{Binding VerticalPieceCount,Converter={StaticResource IntToStringConverter}}" 
-                                   HorizontalAlignment="Right"/>
-                </RibbonGroup>
-            </RibbonTab>
-
-        </Ribbon>
+        <controls:Ribbon Grid.Row="0" DataContext="{Binding RibbonViewModel}"/>
 
         <ItemsControl Grid.Row="1" x:Name="MainView" 
                     Background="SeaShell"
@@ -84,4 +57,4 @@
 
         </ItemsControl>
     </Grid>
-</RibbonWindow>
+</fluent:RibbonWindow>

@@ -1,0 +1,96 @@
+﻿<UserControl x:Class="TrackDesigner.Controls.Ribbon"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converter="clr-namespace:TrackDesigner.Converter"
+             xmlns:fluent="urn:fluent-ribbon"
+             xmlns:viewModels="clr-namespace:TrackDesigner.ViewModels"
+             xmlns:controls="clr-namespace:TrackDesigner.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <viewModels:RibbonViewModel/>
+    </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Asset/Resources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <converter:IntToStringConverter x:Key="IntToStringConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <fluent:Ribbon>
+
+        <fluent:Ribbon.Menu>
+            <fluent:Backstage Header="File">
+                <fluent:BackstageTabControl>
+                    
+                    <fluent:BackstageTabItem Header="Home" >
+                        <controls:RibbonHomePage/>
+                    </fluent:BackstageTabItem>
+
+                    <fluent:Button Header="New Design" Command="{Binding NewDesignCommand}"/>
+                    <fluent:Button Header="Open Design" Command="{Binding OpenDesignCommand}"/>
+                    <fluent:Button Header="Save" Command="{Binding SaveDesignCommand}"/>
+                    <fluent:Button Header="Save As" Command="{Binding SaveAsCommand}"/>
+
+                    <fluent:Backstage>
+                        <fluent:BackstageTabItem Header="Export to image" />
+                    </fluent:Backstage>
+                    <fluent:Button Header="Print" Command="{Binding PrintCommand }"/>
+                    
+                    <fluent:BackstageTabItem Header="About" >
+                        <controls:AboutPage/>
+                    </fluent:BackstageTabItem>
+
+                    <fluent:Button Header="Exit" 
+                                   Command="{Binding ExitCommand}"
+                                   CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
+                </fluent:BackstageTabControl>
+
+            </fluent:Backstage>
+        </fluent:Ribbon.Menu>
+
+        <fluent:RibbonTabItem Header="Layout" >
+            <fluent:RibbonGroupBox Header="Projects">
+                <RibbonButton Label="Button1">
+                    <RibbonButton.LargeImageSource>
+                        <DrawingImage Drawing="{StaticResource NewFile}"/>
+                    </RibbonButton.LargeImageSource>
+                </RibbonButton>
+
+            </fluent:RibbonGroupBox>
+
+            <fluent:RibbonGroupBox Header="Design">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <RibbonTwoLineText Text="Track Width" 
+                                       VerticalContentAlignment="Center"/>
+                    <fluent:TextBox Grid.Row="0" Grid.Column="1"
+                                    Text="{Binding HorizontalPieceCount, Converter={StaticResource IntToStringConverter}}"/>
+
+                    <RibbonTwoLineText Grid.Row="1" Grid.Column="0" Text="Track Height"/>
+                    <fluent:TextBox Grid.Row="1" Grid.Column="1" 
+                                    Text="{Binding VerticalPieceCount,Converter={StaticResource IntToStringConverter}}" />
+
+                </Grid>
+
+            </fluent:RibbonGroupBox>
+        </fluent:RibbonTabItem>
+
+        <fluent:RibbonTabItem Header="View" >
+
+        </fluent:RibbonTabItem>
+    </fluent:Ribbon>
+</UserControl>
