@@ -20,8 +20,8 @@ namespace TrackDesigner
 
         private void OnViewModelPropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName is not (nameof(MainFormViewModel.HorizontalPieceCount)
-                or nameof(MainFormViewModel.VerticalPieceCount))) 
+            if (e.PropertyName is not (nameof(RibbonViewModel.HorizontalPieceCount)
+                or nameof(RibbonViewModel.VerticalPieceCount))) 
                 return;
 
             if (DataContext is not MainFormViewModel viewModel)
@@ -30,9 +30,9 @@ namespace TrackDesigner
             viewModel.TrackPieces.Clear();
 
             var image = FindResource("SvgDrawingImage") as DrawingImage;
-            for (var i = 0; i < viewModel?.HorizontalPieceCount; i++)
+            for (var i = 0; i < viewModel?.RibbonViewModel.HorizontalPieceCount; i++)
             {
-                for (var j = 0; j < viewModel?.VerticalPieceCount; j++)
+                for (var j = 0; j < viewModel?.RibbonViewModel.VerticalPieceCount; j++)
                 {
                     var customShape = new TrackPiece
                     {

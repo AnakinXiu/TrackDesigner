@@ -12,6 +12,21 @@ public class RibbonViewModel : INotifyPropertyChanged
 {
     private const string TrackDesignFileFilterString = "Track Design files | *.tdn";
 
+    private int _horizontalPieceCount;
+    private int _verticalPieceCount;
+
+    public int HorizontalPieceCount
+    {
+        get => _horizontalPieceCount;
+        set => PropertyChanged?.RaiseIfChanged(this, ref _horizontalPieceCount, value, nameof(HorizontalPieceCount));
+    }
+
+    public int VerticalPieceCount
+    {
+        get => _verticalPieceCount;
+        set => PropertyChanged.RaiseIfChanged(this, ref _verticalPieceCount, value, nameof(VerticalPieceCount));
+    }
+
     public ICommand NewDesignCommand { get; }
 
     public ICommand OpenDesignCommand { get; }
