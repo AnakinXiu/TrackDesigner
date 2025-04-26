@@ -51,7 +51,8 @@
                     <controls:TrackPieceControl Width="{Binding Size.Width}"
                                                 Height="{Binding Size.Height}"
                                                 DrawingImage="{Binding DrawingImage}"
-                                                RotateTransform="{Binding Rotate, Mode=OneWay}"/>
+                                                RotateTransform="{Binding Rotate, Mode=OneWay}"
+                                                MouseDown="UIElement_OnMouseDown"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
 

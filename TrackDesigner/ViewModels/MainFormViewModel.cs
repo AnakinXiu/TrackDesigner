@@ -1,17 +1,17 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using TrackDesigner.Util;
+using TrackDesigner.Tools;
 
 namespace TrackDesigner.ViewModels;
 
 public class MainFormViewModel : INotifyPropertyChanged
 {
-
-
     public RibbonViewModel RibbonViewModel { get; set; }
 
     public ObservableCollection<TrackPiece> TrackPieces { get; set; } = [];
+
+    public ITool CurrentTool { get; set; }
 
     public MainFormViewModel()
     {

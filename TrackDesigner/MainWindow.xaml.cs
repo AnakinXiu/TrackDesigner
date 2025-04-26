@@ -1,5 +1,7 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
+using TrackDesigner.Controls;
 using TrackDesigner.ViewModels;
 
 namespace TrackDesigner
@@ -45,6 +47,17 @@ namespace TrackDesigner
                     viewModel.TrackPieces.Add(customShape);
                 }
             }
+        }
+
+        private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (DataContext is not MainFormViewModel viewModel)
+                return;
+
+            if (sender is not TrackPieceControl trackPiece)
+                return;
+
+            viewModel.TrackPieces.Where(piece => piece.Equals(trackPiece));
         }
     }
 }
