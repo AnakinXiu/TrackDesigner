@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using System.Windows.Media;
 using TrackDesigner.Controls;
+using TrackDesigner.Tools;
 using TrackDesigner.ViewModels;
 
 namespace TrackDesigner
@@ -41,7 +42,8 @@ namespace TrackDesigner
                         X = i * 100, 
                         Y = j * 100,
                         Size = new Size(100, 100),
-                        DrawingImage = image
+                        DrawingImage = image,
+                        TrackType = TrackType.Corner
                     };
 
                     viewModel.TrackPieces.Add(customShape);
@@ -54,10 +56,14 @@ namespace TrackDesigner
             if (DataContext is not MainFormViewModel viewModel)
                 return;
 
-            if (sender is not TrackPieceControl trackPiece)
+            if (sender is not TrackPieceControl { DataContext: TrackPiece trackPiece })
                 return;
 
-            viewModel.TrackPieces.Where(piece => piece.Equals(trackPiece));
+            if(!viewModel.TrackPieces.Contains(trackPiece))
+                return;
+
+            viewModel.CurrentTool.OnMouseClick(trackPiece,
+                new MouseFloatEventArgs(e.ChangedButton, e.ClickCount, trackPiece.X, trackPiece.Y, 0));
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
+using TrackDesigner.Tools;
 using TrackDesigner.Util;
 using MessageBox = System.Windows.MessageBox;
 
@@ -10,6 +11,7 @@ namespace TrackDesigner.ViewModels;
 
 public class RibbonViewModel : INotifyPropertyChanged
 {
+    private readonly Action<ITool> _setCurrentTool;
     private const string TrackDesignFileFilterString = "Track Design files | *.tdn";
 
     private int _horizontalPieceCount;
@@ -39,16 +41,27 @@ public class RibbonViewModel : INotifyPropertyChanged
 
     public ICommand ExitCommand { get; }
 
+    public ICommand CornerCommand { get; }
+
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    public RibbonViewModel()
+    public RibbonViewModel() {}
+
+    public RibbonViewModel(Action<ITool> setCurrentTool)
     {
+        _setCurrentTool = setCurrentTool;
         NewDesignCommand = new RelayCommand(CreateNewDesign);
         OpenDesignCommand = new RelayCommand(OpenNewDesign);
         SaveDesignCommand = new RelayCommand(SaveDesign);
         SaveAsCommand = new RelayCommand(SaveDesignAs);
         PrintCommand = new RelayCommand(PrintDesign);
         ExitCommand = new RelayCommand<Window>(Exit);
+        CornerCommand = new RelayCommand(Corner);
+    }
+
+    private void Corner()
+    {
+        _setCurrentTool(new CornerTool());
     }
 
     private void CreateNewDesign()

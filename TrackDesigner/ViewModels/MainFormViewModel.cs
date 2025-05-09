@@ -15,7 +15,7 @@ public class MainFormViewModel : INotifyPropertyChanged
 
     public MainFormViewModel()
     {
-        RibbonViewModel = new RibbonViewModel();
+        RibbonViewModel = new RibbonViewModel(SetCurrentTool);
         RibbonViewModel.PropertyChanged += OnRibbonViewModelPropertyChanged;
     }
 
@@ -29,5 +29,10 @@ public class MainFormViewModel : INotifyPropertyChanged
     protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    private void SetCurrentTool(ITool tool)
+    {
+        CurrentTool = tool;
     }
 }

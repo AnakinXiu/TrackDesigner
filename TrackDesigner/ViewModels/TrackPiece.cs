@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Media;
+using TrackDesigner.Tools;
 using TrackDesigner.Util;
 
 namespace TrackDesigner.ViewModels;
@@ -15,6 +16,8 @@ public class TrackPiece : INotifyPropertyChanged
     public Size Size { get; set; }
 
     public DrawingImage DrawingImage { get; set; }
+
+    public TrackType TrackType { get; set; } = TrackType.Straight;
 
     public RotateTransform Rotate { get; } = new();
 

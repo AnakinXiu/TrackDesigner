@@ -87,6 +87,14 @@
                 </Grid>
 
             </fluent:RibbonGroupBox>
+
+            <fluent:RibbonGroupBox Header="Tools">
+                <RibbonButton Label="Corner Tool" Command="{Binding CornerCommand}">
+                    <RibbonButton.LargeImageSource>
+                        <DrawingImage Drawing="{StaticResource Corner}"/>
+                    </RibbonButton.LargeImageSource>
+                </RibbonButton>
+            </fluent:RibbonGroupBox>
         </fluent:RibbonTabItem>
 
         <fluent:RibbonTabItem Header="View" >
