@@ -37,14 +37,7 @@ namespace TrackDesigner
             {
                 for (var j = 0; j < viewModel?.RibbonViewModel.VerticalPieceCount; j++)
                 {
-                    var customShape = new TrackPiece
-                    {
-                        X = i * 100, 
-                        Y = j * 100,
-                        Size = new Size(100, 100),
-                        DrawingImage = image,
-                        TrackType = TrackType.Corner
-                    };
+                    var customShape = new TrackPiece(new Point(i * 100, j * 100), new Size(100, 100), image, TrackType.Corner);
 
                     viewModel.TrackPieces.Add(customShape);
                 }
@@ -62,7 +55,7 @@ namespace TrackDesigner
             if(!viewModel.TrackPieces.Contains(trackPiece))
                 return;
 
-            viewModel.CurrentTool.OnMouseClick(trackPiece,
+            viewModel.CurrentTool?.OnMouseClick(trackPiece,
                 new MouseFloatEventArgs(e.ChangedButton, e.ClickCount, trackPiece.X, trackPiece.Y, 0));
         }
     }
