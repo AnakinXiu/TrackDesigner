@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
 using TrackDesigner.Controls;
 using TrackDesigner.Tools;
 using TrackDesigner.ViewModels;
@@ -32,13 +31,11 @@ namespace TrackDesigner
 
             viewModel.TrackPieces.Clear();
 
-            var image = FindResource("SvgDrawingImage") as DrawingImage;
             for (var i = 0; i < viewModel?.RibbonViewModel.HorizontalPieceCount; i++)
             {
                 for (var j = 0; j < viewModel?.RibbonViewModel.VerticalPieceCount; j++)
                 {
-                    var customShape = new TrackPiece(new Point(i * 100, j * 100), new Size(100, 100), image, TrackType.Corner);
-
+                    var customShape = new TrackPiece(new Point(i * 100, j * 100), new Size(100, 100));
                     viewModel.TrackPieces.Add(customShape);
                 }
             }

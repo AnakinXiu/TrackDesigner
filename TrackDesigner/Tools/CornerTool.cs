@@ -1,16 +1,9 @@
 ﻿using System.Drawing;
 using System.Windows.Input;
+using TrackDesigner.Tracks;
 using TrackDesigner.ViewModels;
 
 namespace TrackDesigner.Tools;
-
-public enum TrackType
-{
-    Straight,
-    Start,
-    Corner,
-    Apex,
-}
 
 public class CornerTool : ITool
 {
@@ -21,13 +14,12 @@ public class CornerTool : ITool
         if (sender is not TrackPiece trackPiece)
             return false;
 
-        if (trackPiece.TrackType is TrackType.Corner)
-        {
+        if (trackPiece.TrackModel.TrackType is not TrackType.Corner)
+            trackPiece.TrackModel = TrackModel.OuterCorner;
+        else
             trackPiece.Rotation = (RotateDegree)(((int)trackPiece.Rotation + 1) % 4);
-            return true;
-        }
 
-        return false;
+        return true;
     }
 }
 
