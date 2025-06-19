@@ -1,8 +1,8 @@
-﻿using System.Configuration;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media;
+using TrackDesigner.Tracks;
 
-namespace TrackDesigner.Tracks;
+namespace TrackDesigner.Model.Tracks;
 
 public class TrackModel
 {

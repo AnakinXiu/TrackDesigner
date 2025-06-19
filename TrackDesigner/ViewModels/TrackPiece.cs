@@ -2,6 +2,8 @@
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Media;
+using TrackDesigner.Model;
+using TrackDesigner.Model.Tracks;
 using TrackDesigner.Tracks;
 using TrackDesigner.Util;
 
