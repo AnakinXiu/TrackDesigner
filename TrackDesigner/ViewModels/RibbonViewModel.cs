@@ -12,7 +12,7 @@ namespace TrackDesigner.ViewModels;
 public class RibbonViewModel : INotifyPropertyChanged
 {
     private readonly Action<ITool> _setCurrentTool;
-    private const string TrackDesignFileFilterString = "Track Design files | *.tdn";
+    private const string TrackDesignFileFilterString = "Track Design files | *.trk";
 
     private int _horizontalPieceCount;
     private int _verticalPieceCount;
