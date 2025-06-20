@@ -5,7 +5,7 @@ using TrackDesigner.ViewModels;
 
 namespace TrackDesigner.Tools;
 
-public class CornerTool : ITool
+public class StraightTool : ITool
 {
     public bool IsAvailable { get; private set; }
 
@@ -14,8 +14,8 @@ public class CornerTool : ITool
         if (sender is not TrackPiece trackPiece)
             return false;
 
-        if (trackPiece.TrackModel.TrackType is not TrackType.Corner)
-            trackPiece.TrackModel = TrackModel.OuterCorner;
+        if (trackPiece.TrackModel.TrackType is not TrackType.Straight)
+            trackPiece.TrackModel = TrackModel.Straight;
         else
             trackPiece.Rotation = (RotateDegree)(((int)trackPiece.Rotation + 1) % 4);
 

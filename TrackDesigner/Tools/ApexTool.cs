@@ -5,17 +5,16 @@ using TrackDesigner.ViewModels;
 
 namespace TrackDesigner.Tools;
 
-public class CornerTool : ITool
+public class ApexTool : ITool
 {
     public bool IsAvailable { get; private set; }
-
     public bool OnMouseClick(object sender, MouseFloatEventArgs args)
     {
         if (sender is not TrackPiece trackPiece)
             return false;
 
-        if (trackPiece.TrackModel.TrackType is not TrackType.Corner)
-            trackPiece.TrackModel = TrackModel.OuterCorner;
+        if (trackPiece.TrackModel.TrackType is not TrackType.Apex)
+            trackPiece.TrackModel = TrackModel.Apex;
         else
             trackPiece.Rotation = (RotateDegree)(((int)trackPiece.Rotation + 1) % 4);
 

@@ -44,6 +44,8 @@ public class RibbonViewModel : INotifyPropertyChanged
     public ICommand CornerCommand { get; }
 
     public ICommand StraightCommand { get; }
+    
+    public ICommand ApexCommand { get; }
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -61,6 +63,12 @@ public class RibbonViewModel : INotifyPropertyChanged
         ExitCommand = new RelayCommand<Window>(Exit);
         CornerCommand = new RelayCommand(ActiveCornerTool);
         StraightCommand = new RelayCommand(ActiveStraightTool);
+        ApexCommand = new RelayCommand(ActiveApexTool);
+    }
+
+    private void ActiveApexTool()
+    {
+        _setCurrentTool(new ApexTool());
     }
 
     private void ActiveCornerTool()

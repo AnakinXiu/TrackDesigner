@@ -58,14 +58,19 @@
     <DrawingImage x:Key="Apex">
         <DrawingImage.Drawing>
             <DrawingGroup ClipGeometry="M0,0 V500 H500 V0 H0 Z">
-                <GeometryDrawing Brush="#FFC43535">
-                    <GeometryDrawing.Geometry>
-                        <RectangleGeometry RadiusX="0" RadiusY="0" Rect="0,15,500,60" />
-                    </GeometryDrawing.Geometry>
-                </GeometryDrawing>
                 <GeometryDrawing Brush="#FF1E1E1E">
                     <GeometryDrawing.Geometry>
-                        <RectangleGeometry RadiusX="0" RadiusY="0" Rect="0,75,500,425" />
+                        <RectangleGeometry RadiusX="0" RadiusY="0" Rect="0,0,500,500" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="#FFC43535">
+                    <GeometryDrawing.Geometry>
+                        <EllipseGeometry RadiusX="75" RadiusY="75" Center="500,500" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="#FFFFFFFF">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry RadiusX="0" RadiusY="0" Rect="485,485,15,15" />
                     </GeometryDrawing.Geometry>
                 </GeometryDrawing>
             </DrawingGroup>
@@ -97,6 +102,26 @@
             <GeometryDrawing Brush="#FF1E1E1E">
                 <GeometryDrawing.Geometry>
                     <RectangleGeometry RadiusX="0" RadiusY="0" Rect="0,75,500,425" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+        </DrawingGroup>
+    </DrawingGroup>
+
+    <DrawingGroup x:Key="ApexIcon" ClipGeometry="M0,0 V600 H600 V0 H0 Z">
+        <DrawingGroup ClipGeometry="M0,0 V500 H500 V0 H0 Z">
+            <GeometryDrawing Brush="#FF1E1E1E">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0" RadiusY="0" Rect="0,0,500,500" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FFC43535">
+                <GeometryDrawing.Geometry>
+                    <EllipseGeometry RadiusX="75" RadiusY="75" Center="500,500" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FFFFFFFF">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0" RadiusY="0" Rect="485,485,15,15" />
                 </GeometryDrawing.Geometry>
             </GeometryDrawing>
         </DrawingGroup>
