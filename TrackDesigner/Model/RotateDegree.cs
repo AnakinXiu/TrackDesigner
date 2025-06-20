@@ -1,4 +1,4 @@
-﻿namespace TrackDesigner;
+﻿namespace TrackDesigner.Model;
 
 public enum RotateDegree
 {

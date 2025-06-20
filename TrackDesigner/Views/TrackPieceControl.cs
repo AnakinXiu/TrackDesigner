@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace TrackDesigner.Controls;
+namespace TrackDesigner.Views;
 
 [TemplatePart(Name = "Part_Border", Type = typeof(Border))]
 public class TrackPieceControl : Control

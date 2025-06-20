@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
+using TrackDesigner.Tools;
 using TrackDesigner.Util;
 using MessageBox = System.Windows.MessageBox;
 
@@ -10,7 +11,23 @@ namespace TrackDesigner.ViewModels;
 
 public class RibbonViewModel : INotifyPropertyChanged
 {
+    private readonly Action<ITool> _setCurrentTool;
     private const string TrackDesignFileFilterString = "Track Design files | *.tdn";
+
+    private int _horizontalPieceCount;
+    private int _verticalPieceCount;
+
+    public int HorizontalPieceCount
+    {
+        get => _horizontalPieceCount;
+        set => PropertyChanged?.RaiseIfChanged(this, ref _horizontalPieceCount, value, nameof(HorizontalPieceCount));
+    }
+
+    public int VerticalPieceCount
+    {
+        get => _verticalPieceCount;
+        set => PropertyChanged.RaiseIfChanged(this, ref _verticalPieceCount, value, nameof(VerticalPieceCount));
+    }
 
     public ICommand NewDesignCommand { get; }
 
@@ -24,16 +41,44 @@ public class RibbonViewModel : INotifyPropertyChanged
 
     public ICommand ExitCommand { get; }
 
+    public ICommand CornerCommand { get; }
+
+    public ICommand StraightCommand { get; }
+    
+    public ICommand ApexCommand { get; }
+
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    public RibbonViewModel()
+    [DesignOnly(true)]
+    public RibbonViewModel() {}
+
+    public RibbonViewModel(Action<ITool> setCurrentTool)
     {
+        _setCurrentTool = setCurrentTool;
         NewDesignCommand = new RelayCommand(CreateNewDesign);
         OpenDesignCommand = new RelayCommand(OpenNewDesign);
         SaveDesignCommand = new RelayCommand(SaveDesign);
         SaveAsCommand = new RelayCommand(SaveDesignAs);
         PrintCommand = new RelayCommand(PrintDesign);
         ExitCommand = new RelayCommand<Window>(Exit);
+        CornerCommand = new RelayCommand(ActiveCornerTool);
+        StraightCommand = new RelayCommand(ActiveStraightTool);
+        ApexCommand = new RelayCommand(ActiveApexTool);
+    }
+
+    private void ActiveApexTool()
+    {
+        _setCurrentTool(new ApexTool());
+    }
+
+    private void ActiveCornerTool()
+    {
+        _setCurrentTool(new CornerTool());
+    }
+
+    private void ActiveStraightTool()
+    {
+        _setCurrentTool(new StraightTool());
     }
 
     private void CreateNewDesign()

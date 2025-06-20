@@ -1,4 +1,6 @@
 ﻿
+using TrackDesigner.Model;
+
 namespace TrackDesigner.Util;
 
 public static class RotationExtensions
