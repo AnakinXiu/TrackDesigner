@@ -11,7 +11,7 @@ public class MainFormViewModel : INotifyPropertyChanged
 
     public ObservableCollection<TrackPiece> TrackPieces { get; set; } = [];
 
-    public ITool CurrentTool { get; set; }
+    public ITool? CurrentTool { get; set; }
 
     public MainFormViewModel()
     {

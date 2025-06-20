@@ -1,11 +1,11 @@
 ﻿<fluent:RibbonWindow x:Class="TrackDesigner.MainWindow"
                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                     xmlns:trackDesigner="clr-namespace:TrackDesigner"
                      xmlns:converter="clr-namespace:TrackDesigner.Converter"
                      xmlns:controls="clr-namespace:TrackDesigner.Controls"
                      xmlns:fluent="urn:fluent-ribbon"
                      xmlns:viewModels="clr-namespace:TrackDesigner.ViewModels"
+                     xmlns:views="clr-namespace:TrackDesigner.Views"
                      Title="Track Designer"
                      Width="800" Height="640">
 
@@ -48,7 +48,7 @@
 
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <controls:TrackPieceControl Width="{Binding Size.Width}"
+                    <views:TrackPieceControl Width="{Binding Size.Width}"
                                                 Height="{Binding Size.Height}"
                                                 DrawingImage="{Binding DrawingImage}"
                                                 RotateTransform="{Binding Rotate, Mode=OneWay}"

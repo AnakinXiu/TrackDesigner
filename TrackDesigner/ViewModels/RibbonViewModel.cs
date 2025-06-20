@@ -43,8 +43,11 @@ public class RibbonViewModel : INotifyPropertyChanged
 
     public ICommand CornerCommand { get; }
 
+    public ICommand StraightCommand { get; }
+
     public event PropertyChangedEventHandler? PropertyChanged;
 
+    [DesignOnly(true)]
     public RibbonViewModel() {}
 
     public RibbonViewModel(Action<ITool> setCurrentTool)
@@ -56,12 +59,18 @@ public class RibbonViewModel : INotifyPropertyChanged
         SaveAsCommand = new RelayCommand(SaveDesignAs);
         PrintCommand = new RelayCommand(PrintDesign);
         ExitCommand = new RelayCommand<Window>(Exit);
-        CornerCommand = new RelayCommand(Corner);
+        CornerCommand = new RelayCommand(ActiveCornerTool);
+        StraightCommand = new RelayCommand(ActiveStraightTool);
     }
 
-    private void Corner()
+    private void ActiveCornerTool()
     {
         _setCurrentTool(new CornerTool());
+    }
+
+    private void ActiveStraightTool()
+    {
+        _setCurrentTool(new StraightTool());
     }
 
     private void CreateNewDesign()

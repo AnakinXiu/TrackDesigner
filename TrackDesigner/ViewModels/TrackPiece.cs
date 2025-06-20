@@ -50,7 +50,7 @@ public class TrackPiece : INotifyPropertyChanged
         Y = (int)location.Y;
         Size = size;
         TrackModel = TrackModel.GetTrackModel(TrackType.None);
-        Rotate = new RotateTransform(0, Size.Width / 2, Size.Height / 2);
+        Rotate = new RotateTransform(0, (Size.Width - 2) / 2, (Size.Height - 2) / 2);
     }
 
     protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)

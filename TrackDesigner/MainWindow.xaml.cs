@@ -3,6 +3,7 @@ using System.Windows.Input;
 using TrackDesigner.Controls;
 using TrackDesigner.Tools;
 using TrackDesigner.ViewModels;
+using TrackDesigner.Views;
 
 namespace TrackDesigner
 {

@@ -94,6 +94,12 @@
                         <DrawingImage Drawing="{StaticResource Corner}"/>
                     </RibbonButton.LargeImageSource>
                 </RibbonButton>
+
+                <RibbonButton Label="Straight Tool" Command="{Binding StraightCommand}">
+                    <RibbonButton.LargeImageSource>
+                        <DrawingImage Drawing="{StaticResource StraightIcon}"/>
+                    </RibbonButton.LargeImageSource>
+                </RibbonButton>
             </fluent:RibbonGroupBox>
         </fluent:RibbonTabItem>
 
