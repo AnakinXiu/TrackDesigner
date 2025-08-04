@@ -36,7 +36,7 @@ namespace TrackDesigner
             {
                 for (var j = 0; j < viewModel?.RibbonViewModel.VerticalPieceCount; j++)
                 {
-                    var customShape = new TrackPiece(new Point(i * 100, j * 100), new Size(100, 100));
+                    var customShape = new TrackPieceViewModel(new Point(i * 100, j * 100), new Size(100, 100));
                     viewModel.TrackPieces.Add(customShape);
                 }
             }
@@ -47,7 +47,7 @@ namespace TrackDesigner
             if (DataContext is not MainFormViewModel viewModel)
                 return;
 
-            if (sender is not TrackPieceControl { DataContext: TrackPiece trackPiece })
+            if (sender is not TrackPieceControl { DataContext: TrackPieceViewModel trackPiece })
                 return;
 
             if(!viewModel.TrackPieces.Contains(trackPiece))

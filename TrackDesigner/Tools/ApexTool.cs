@@ -10,7 +10,7 @@ public class ApexTool : ITool
     public bool IsAvailable { get; private set; }
     public bool OnMouseClick(object sender, MouseFloatEventArgs args)
     {
-        if (sender is not TrackPiece trackPiece)
+        if (sender is not TrackPieceViewModel trackPiece)
             return false;
 
         if (trackPiece.TrackModel.TrackType is not TrackType.Apex)

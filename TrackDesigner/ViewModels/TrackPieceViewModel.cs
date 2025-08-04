@@ -9,7 +9,7 @@ using TrackDesigner.Util;
 
 namespace TrackDesigner.ViewModels;
 
-public class TrackPiece : INotifyPropertyChanged
+public class TrackPieceViewModel : INotifyPropertyChanged
 {
     private TrackModel _trackModel;
     public int X { get; set; }
@@ -44,7 +44,7 @@ public class TrackPiece : INotifyPropertyChanged
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    public TrackPiece(Point location, Size size)
+    public TrackPieceViewModel(Point location, Size size)
     {
         X = (int)location.X;
         Y = (int)location.Y;

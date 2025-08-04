@@ -9,7 +9,7 @@ public class MainFormViewModel : INotifyPropertyChanged
 {
     public RibbonViewModel RibbonViewModel { get; set; }
 
-    public ObservableCollection<TrackPiece> TrackPieces { get; set; } = [];
+    public ObservableCollection<TrackPieceViewModel> TrackPieces { get; set; } = [];
 
     public ITool? CurrentTool { get; set; }
 

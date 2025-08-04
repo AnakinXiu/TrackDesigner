@@ -11,7 +11,7 @@ public class CornerTool : ITool
 
     public bool OnMouseClick(object sender, MouseFloatEventArgs args)
     {
-        if (sender is not TrackPiece trackPiece)
+        if (sender is not TrackPieceViewModel trackPiece)
             return false;
 
         if (trackPiece.TrackModel.TrackType is not TrackType.Corner)
