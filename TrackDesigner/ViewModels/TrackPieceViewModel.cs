@@ -12,6 +12,7 @@ namespace TrackDesigner.ViewModels;
 public class TrackPieceViewModel : INotifyPropertyChanged
 {
     private TrackModel _trackModel;
+
     public int X { get; set; }
 
     public int Y { get; set; }
