@@ -14,7 +14,7 @@ public class CornerTool : ITool
         if (sender is not TrackPieceViewModel trackPiece)
             return false;
 
-        if (trackPiece.TrackModel.TrackType is not TrackType.Corner)
+        if (trackPiece.TrackModel.TrackPieceType is not TrackPieceType.OuterCorner)
             trackPiece.TrackModel = TrackModel.OuterCorner;
         else
             trackPiece.Rotation = (RotateDegree)(((int)trackPiece.Rotation + 1) % 4);

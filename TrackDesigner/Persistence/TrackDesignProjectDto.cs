@@ -1,4 +1,6 @@
-﻿namespace TrackDesigner.Persistence;
+﻿using TrackDesigner.Model;
+
+namespace TrackDesigner.Persistence;
 
 public class TrackDesignProjectDto
 {
@@ -10,7 +12,9 @@ public class TrackDesignProjectDto
 
     public int Height { get; set; }
 
-    public ProjectSettings ProjectSettings { get; set; }
+    public int TrackPieceWidth { get; set; }
 
-    public IEnumerable<TrackPiece> TrackPieces { get; set; } 
+    public Dictionary<TrackPieceType, int> TrackPieceCounts { get; set; }
+
+    public IEnumerable<TrackPieceDto> TrackPieces { get; set; } 
 }

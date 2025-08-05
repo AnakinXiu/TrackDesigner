@@ -1,9 +1,10 @@
-﻿namespace TrackDesigner.Persistence;
+﻿namespace TrackDesigner.Model;
 
 public enum TrackPieceType
 {
     None,
-    OuterCorner,
     Straight,
+    Start,
+    OuterCorner,
     Apex,
 }

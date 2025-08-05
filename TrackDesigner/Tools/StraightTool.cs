@@ -14,7 +14,7 @@ public class StraightTool : ITool
         if (sender is not TrackPieceViewModel trackPiece)
             return false;
 
-        if (trackPiece.TrackModel.TrackType is not TrackType.Straight)
+        if (trackPiece.TrackModel.TrackPieceType is not TrackPieceType.Straight)
             trackPiece.TrackModel = TrackModel.Straight;
         else
             trackPiece.Rotation = (RotateDegree)(((int)trackPiece.Rotation + 1) % 4);

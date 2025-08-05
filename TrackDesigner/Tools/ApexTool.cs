@@ -13,7 +13,7 @@ public class ApexTool : ITool
         if (sender is not TrackPieceViewModel trackPiece)
             return false;
 
-        if (trackPiece.TrackModel.TrackType is not TrackType.Apex)
+        if (trackPiece.TrackModel.TrackPieceType is not TrackPieceType.Apex)
             trackPiece.TrackModel = TrackModel.Apex;
         else
             trackPiece.Rotation = (RotateDegree)(((int)trackPiece.Rotation + 1) % 4);

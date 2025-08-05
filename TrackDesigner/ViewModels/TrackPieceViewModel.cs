@@ -50,7 +50,7 @@ public class TrackPieceViewModel : INotifyPropertyChanged
         X = (int)location.X;
         Y = (int)location.Y;
         Size = size;
-        TrackModel = TrackModel.GetTrackModel(TrackType.None);
+        TrackModel = TrackModel.GetTrackModel(TrackPieceType.None);
         Rotate = new RotateTransform(0, (Size.Width - 2) / 2, (Size.Height - 2) / 2);
     }
 
