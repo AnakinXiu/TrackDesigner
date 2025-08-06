@@ -1,4 +1,4 @@
-﻿using TrackDesigner.Model.Tracks;
+﻿using TrackDesigner.Model;
 
 namespace TrackDesigner.Model;
 

@@ -1,4 +1,4 @@
-﻿namespace TrackDesigner.Persistence;
+﻿namespace TrackDesigner.Model;
 
 public enum TrackPieceOrientation
 {
