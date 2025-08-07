@@ -2,7 +2,7 @@
 
 namespace TrackDesigner.Model;
 
-public class DesignProject
+public class ProjectInfo
 {
     public string ProjectName { get; set; }
 
@@ -15,6 +15,4 @@ public class DesignProject
     public int TrackPieceWidth { get; set; }
 
     public Dictionary<TrackPieceType, int> TrackPieceCounts { get; set; }
-
-    public IEnumerable<TrackPieceDto> TrackPieces { get; set; }
 }
