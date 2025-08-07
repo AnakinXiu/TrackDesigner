@@ -2,42 +2,55 @@
 using System.IO.Compression;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Windows.Shapes;
+using TrackDesigner.Model;
 
 namespace TrackDesigner.Persistence;
 
 public class ProjectPersistence
 {
+    private const string ProjectInfoEntryName = "ProjectInfo.json";
+
     public void LoadProject(string path)
     {
         var zipArchive = ZipFile.OpenRead(path);
-        foreach (var entry in zipArchive.Entries)
-        {
-            if (entry.Name == "settings.json")
-            {
-                using var stream = entry.Open();
-                using var reader = new StreamReader(stream, Encoding.UTF8);
-                var settingsJson = reader.ReadToEnd();
-                // Deserialize settingsJson to ProjectSettings object
-            }
-            else if (entry.Name.EndsWith(".trackpiece"))
-            {
-                using var stream = entry.Open();
-                using var reader = new StreamReader(stream, Encoding.UTF8);
-                var trackPieceData = reader.ReadToEnd();
-                // Deserialize trackPieceData to TrackPieceDto object
-            }
-        }
+        var designProjectDto = LoadZipEntryAsJson<TrackDesignProjectDto>(zipArchive, ProjectInfoEntryName);
     }
 
-    public void SaveProject(TrackDesignProjectDto projectDto, string path)
+    private static T LoadZipEntryAsJson<T>(ZipArchive zipArchive, string entryName)
+    {
+        var entry = zipArchive.GetEntry(entryName);
+        if (entry is null)
+        {
+            // TODO: Handle missing entry case, maybe throw an exception or return default
+        }
+
+        using var stream = entry.Open();
+
+        using var reader = new StreamReader(stream, Encoding.UTF8);
+        var settingsJson = reader.ReadToEnd();
+        var result = JsonSerializer.Deserialize<T>(settingsJson);
+
+        if (result is null)
+        {
+            // 
+        }
+
+        return result;
+    }
+
+    public void SaveProject(DesignProject project, string path)
     {
         var zipArchive = ZipFile.Open(path, ZipArchiveMode.Update, Encoding.UTF8);
-        zipArchive.GetEntry("").Delete();
 
-        var entry = zipArchive.CreateEntry("");
+        WriteZipEntry(zipArchive, ProjectInfoEntryName, new TrackDesignProjectDto());
+    }
+
+    private static void WriteZipEntry(ZipArchive zipArchive, string entryName, object data)
+    {
+        zipArchive.GetEntry(entryName)?.Delete();
+    
+        var entry = zipArchive.CreateEntry(entryName);
         using var stream = entry.Open();
-        JsonSerializer.Serialize(stream, projectDto, JsonSerializerOptions.Default);
+        JsonSerializer.Serialize(stream, data, JsonSerializerOptions.Default);
     }
 }
