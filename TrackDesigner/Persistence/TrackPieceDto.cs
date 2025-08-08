@@ -2,7 +2,7 @@
 
 namespace TrackDesigner.Persistence;
 
-public class TrackPieceDto
+internal class TrackPieceDto
 {
     public int X { get; set; }
 
