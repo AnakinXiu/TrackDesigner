@@ -7,13 +7,14 @@ public class TrackModel
 {
     public TrackPieceType TrackPieceType { get; }
 
+    public TrackPieceOrientation Orientation { get; set; }
+
     public DrawingImage TrackImage { get; }
 
     private TrackModel(TrackPieceType trackPieceType, DrawingImage trackImage)
     {
         TrackPieceType = trackPieceType;
         TrackImage = trackImage;
-
     }
 
     public static readonly TrackModel OuterCorner

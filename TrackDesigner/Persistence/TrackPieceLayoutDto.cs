@@ -13,7 +13,7 @@ internal class TrackPieceLayoutDto
                 .Select(j => new TrackPieceDto
                 {
                     Type = trackPieces[i, j].TrackPieceType,
-                    Orientation= trackPieces[i, j].TrackPieceOrientation,
+                    Orientation= trackPieces[i, j].Orientation,
                     X = j,
                     Y = i
                 }));

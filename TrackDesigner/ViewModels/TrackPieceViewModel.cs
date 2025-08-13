@@ -33,9 +33,10 @@ public class TrackPieceViewModel : INotifyPropertyChanged
 
     public TrackPieceOrientation Orientation
     {
-        get => Rotate.Angle.ToEnum();
+        get => _trackModel.Orientation;
         set
         {
+            _trackModel.Orientation = value;
             Rotate.Angle = value.ToDegree();
             PropertyChanged?.Raise(this, nameof(Rotate), nameof(Orientation));
         }
