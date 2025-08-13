@@ -31,13 +31,13 @@ public class TrackPieceViewModel : INotifyPropertyChanged
 
     public RotateTransform Rotate { get; }
 
-    public RotateDegree Rotation
+    public TrackPieceOrientation Orientation
     {
         get => Rotate.Angle.ToEnum();
         set
         {
             Rotate.Angle = value.ToDegree();
-            PropertyChanged?.Raise(this, nameof(Rotate), nameof(Rotation));
+            PropertyChanged?.Raise(this, nameof(Rotate), nameof(Orientation));
         }
     }
 

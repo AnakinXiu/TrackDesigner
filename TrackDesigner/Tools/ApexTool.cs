@@ -1,6 +1,5 @@
 ﻿using TrackDesigner.Model;
-using TrackDesigner.Model.Tracks;
-using TrackDesigner.Tracks;
+using TrackDesigner.Util;
 using TrackDesigner.ViewModels;
 
 namespace TrackDesigner.Tools;
@@ -16,7 +15,7 @@ public class ApexTool : ITool
         if (trackPiece.TrackModel.TrackPieceType is not TrackPieceType.Apex)
             trackPiece.TrackModel = TrackModel.Apex;
         else
-            trackPiece.Rotation = (RotateDegree)(((int)trackPiece.Rotation + 1) % 4);
+            trackPiece.Orientation = trackPiece.Orientation.Next();
 
         return true;
     }

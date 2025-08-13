@@ -5,27 +5,39 @@ namespace TrackDesigner.Util;
 
 public static class RotationExtensions
 {
-    public static double ToDegree(this RotateDegree rotateDegree)
+    public static double ToDegree(this TrackPieceOrientation orientation)
     {
-        return rotateDegree switch
+        return orientation switch
         {
-            RotateDegree.None => 0,
-            RotateDegree.Clockwise90 => 90,
-            RotateDegree.Clockwise180 => 180,
-            RotateDegree.Clockwise270 => 270,
-            _ => throw new ArgumentOutOfRangeException(nameof(rotateDegree), rotateDegree, null)
+            TrackPieceOrientation.Upwards => 0,
+            TrackPieceOrientation.Rightwards => 90,
+            TrackPieceOrientation.Downwards => 180,
+            TrackPieceOrientation.Leftwards=> 270,
+            _ => throw new ArgumentOutOfRangeException(nameof(orientation), orientation, null)
         };
     }
 
-    public static RotateDegree ToEnum(this double degree)
+    public static TrackPieceOrientation ToEnum(this double degree)
     {
         return degree switch
         {
-            0 => RotateDegree.None,
-            90 => RotateDegree.Clockwise90,
-            180 => RotateDegree.Clockwise180,
-            270 => RotateDegree.Clockwise270,
+            0 => TrackPieceOrientation.Upwards,
+            90 => TrackPieceOrientation.Rightwards,
+            180 => TrackPieceOrientation.Downwards,
+            270 => TrackPieceOrientation.Leftwards,
             _ => throw new ArgumentOutOfRangeException(nameof(degree), degree, null)
+        };
+    }
+
+    public static TrackPieceOrientation Next(this TrackPieceOrientation orientation)
+    {
+        return orientation switch
+        {
+            TrackPieceOrientation.Upwards => TrackPieceOrientation.Rightwards,
+            TrackPieceOrientation.Rightwards => TrackPieceOrientation.Downwards,
+            TrackPieceOrientation.Downwards => TrackPieceOrientation.Leftwards,
+            TrackPieceOrientation.Leftwards => TrackPieceOrientation.Upwards,
+            _ => throw new ArgumentOutOfRangeException(nameof(orientation), orientation, null)
         };
     }
 }

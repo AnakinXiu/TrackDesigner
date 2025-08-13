@@ -3,7 +3,7 @@
 public enum TrackPieceOrientation
 {
     Upwards,
+    Rightwards,
     Downwards,
-    Leftwards,
-    Rightwards
+    Leftwards
 }
