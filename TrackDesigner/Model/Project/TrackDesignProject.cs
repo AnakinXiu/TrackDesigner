@@ -15,7 +15,7 @@ public class TrackDesignProject
 
         foreach (var trackPiece in tackPieceDto.TrackPieces)
         {
-            
+            TrackPieces[trackPiece.X, trackPiece.Y] = new TrackModel(trackPiece.Type, trackPiece.Orientation);
         }
     }
 }
