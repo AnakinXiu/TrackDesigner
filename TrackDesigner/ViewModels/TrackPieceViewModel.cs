@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Media;
+using TrackDesigner.Asset;
 using TrackDesigner.Model;
 using TrackDesigner.Util;
 
@@ -10,6 +11,7 @@ namespace TrackDesigner.ViewModels;
 public class TrackPieceViewModel : INotifyPropertyChanged
 {
     private TrackModel _trackModel;
+    private readonly TrackPieceImageRepository _imageRepository;
 
     public int X { get; set; }
 
@@ -17,7 +19,7 @@ public class TrackPieceViewModel : INotifyPropertyChanged
 
     public Size Size { get; set; }
 
-    public DrawingImage DrawingImage => _trackModel.TrackImage;
+    public DrawingImage DrawingImage => _imageRepository.GetImage(_trackModel.TrackPieceType);
 
     public TrackModel TrackModel
     {
@@ -44,27 +46,18 @@ public class TrackPieceViewModel : INotifyPropertyChanged
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    public TrackPieceViewModel(Point location, Size size)
+    public TrackPieceViewModel(Point location, Size size, TrackPieceImageRepository imageRepository)
     {
         X = (int)location.X;
         Y = (int)location.Y;
         Size = size;
-        TrackModel = TrackModel.GetTrackModel(TrackPieceType.None);
+        _imageRepository = imageRepository ?? throw new ArgumentNullException(nameof(imageRepository));
+        TrackModel = new TrackModel(TrackPieceType.None);
         Rotate = new RotateTransform(0, (Size.Width - 2) / 2, (Size.Height - 2) / 2);
     }
 
     protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
-    {
-        if (EqualityComparer<T>.Default.Equals(field, value)) 
-            return false;
-
-        field = value;
-        OnPropertyChanged(propertyName);
-        return true;
     }
 }

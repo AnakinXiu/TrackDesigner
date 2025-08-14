@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using TrackDesigner.Controls;
+using TrackDesigner.Asset;
 using TrackDesigner.Tools;
 using TrackDesigner.ViewModels;
 using TrackDesigner.Views;
@@ -12,10 +12,13 @@ namespace TrackDesigner
     /// </summary>
     public partial class MainWindow
     {
+        private readonly TrackPieceImageRepository _imageRepository;
+
         public MainWindow()
         {
             InitializeComponent();
 
+            _imageRepository = new TrackPieceImageRepository();
             var viewModel = new MainFormViewModel();
             viewModel.PropertyChanged += OnViewModelPropertyChanged;
             DataContext = viewModel;
@@ -36,7 +39,7 @@ namespace TrackDesigner
             {
                 for (var j = 0; j < viewModel?.RibbonViewModel.VerticalPieceCount; j++)
                 {
-                    var customShape = new TrackPieceViewModel(new Point(i * 100, j * 100), new Size(100, 100));
+                    var customShape = new TrackPieceViewModel(new Point(i * 100, j * 100), new Size(100, 100), _imageRepository);
                     viewModel.TrackPieces.Add(customShape);
                 }
             }
