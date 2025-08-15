@@ -14,7 +14,7 @@ public class TrackPieceImageRepository
             TrackPieceType.Straight => Straight,
             TrackPieceType.Apex => Apex,
             TrackPieceType.None => None,
-            TrackPieceType.Start => Start,
+            TrackPieceType.Start => None,
             _ => throw new ArgumentOutOfRangeException(nameof(trackPieceType), trackPieceType, null)
         };
     }
@@ -23,5 +23,5 @@ public class TrackPieceImageRepository
     private static readonly DrawingImage Apex = Application.Current.FindResource("Apex") as DrawingImage;
     private static readonly DrawingImage None = null;
     private static readonly DrawingImage Straight = Application.Current.FindResource("Straight") as DrawingImage;
-    private static readonly DrawingImage Start = Application.Current.FindResource("Start ") as DrawingImage;
+    // private static readonly DrawingImage Start = Application.Current.FindResource("Start") as DrawingImage;
 }
