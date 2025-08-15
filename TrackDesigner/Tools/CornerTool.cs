@@ -14,7 +14,7 @@ public class CornerTool : ITool
             return false;
 
         if (trackPiece.TrackModel.TrackPieceType is not TrackPieceType.OuterCorner)
-            trackPiece.TrackModel = TrackModel.OuterCorner;
+            trackPiece.TrackModel = new TrackModel(TrackPieceType.OuterCorner);
         else
             trackPiece.Orientation = trackPiece.Orientation.Next();
 

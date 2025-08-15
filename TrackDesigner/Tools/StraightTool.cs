@@ -14,7 +14,7 @@ public class StraightTool : ITool
             return false;
 
         if (trackPiece.TrackModel.TrackPieceType is not TrackPieceType.Straight)
-            trackPiece.TrackModel = TrackModel.Straight;
+            trackPiece.TrackModel = new TrackModel(TrackPieceType.Straight);
         else
             trackPiece.Orientation = trackPiece.Orientation.Next();
 

@@ -13,7 +13,7 @@ public class ApexTool : ITool
             return false;
 
         if (trackPiece.TrackModel.TrackPieceType is not TrackPieceType.Apex)
-            trackPiece.TrackModel = TrackModel.Apex;
+            trackPiece.TrackModel = new TrackModel(TrackPieceType.Apex);
         else
             trackPiece.Orientation = trackPiece.Orientation.Next();
 
