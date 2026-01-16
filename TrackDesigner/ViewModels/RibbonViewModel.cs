@@ -124,8 +124,8 @@ public class RibbonViewModel : INotifyPropertyChanged
         {
             CreatePrompt = true,
             AddExtension = true,
-            CheckFileExists = true,
-            CheckPathExists = true,
+            CheckFileExists = false,
+            CheckPathExists = false,
             DefaultExt = ProjectPersistence.ProjectFileExtension,
             Filter = TrackDesignFileFilterString,
             FilterIndex = 1,

@@ -16,7 +16,7 @@ public static class ProjectPersistence
 
     public static TrackDesignProject LoadProject(string path)
     {
-        var zipArchive = ZipFile.OpenRead(path);
+        using var zipArchive = ZipFile.OpenRead(path);
         var projectInfo = LoadZipEntryAsJson<ProjectInfo>(zipArchive, ProjectInfoEntryName);
         var tackPieceDto = LoadZipEntryAsJson<TrackPieceLayoutDto>(zipArchive, TrackPiecesEntryName);
 
@@ -47,13 +47,16 @@ public static class ProjectPersistence
 
     public static void SaveProject(TrackDesignProject project, Stream fileStream)
     {
-        var zipArchive = new ZipArchive(fileStream, ZipArchiveMode.Update, true);
+        // Create a fresh archive and ensure it is disposed so the central directory is written.
+        using var zipArchive = new ZipArchive(fileStream, ZipArchiveMode.Create, leaveOpen: true);
         SaveProjectInner(project, zipArchive);
     }
 
     public static void SaveProject(TrackDesignProject project, string path)
     {
-        var zipArchive = ZipFile.Open(path, ZipArchiveMode.Update, Encoding.UTF8);
+        // Create a fresh archive and ensure it is disposed so the central directory is written.
+        using var fileStream = new FileStream(path, FileMode.Create, FileAccess.ReadWrite, FileShare.None);
+        using var zipArchive = new ZipArchive(fileStream, ZipArchiveMode.Create, leaveOpen: false);
         SaveProjectInner(project, zipArchive);
     }
 
