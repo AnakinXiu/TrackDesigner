@@ -6,12 +6,15 @@ using TrackDesigner.Model;
 
 namespace TrackDesigner.Persistence;
 
-public class ProjectPersistence
+public static class ProjectPersistence
 {
     private const string ProjectInfoEntryName = "ProjectInfo.json";
     private const string TrackPiecesEntryName = "TrackPieceLayout.json";
 
-    public TrackDesignProject LoadProject(string path)
+    public const string ProjectFileExtension = "tdp";
+    public const string ProjectFileNameString = "Track Design Project files";
+
+    public static TrackDesignProject LoadProject(string path)
     {
         var zipArchive = ZipFile.OpenRead(path);
         var projectInfo = LoadZipEntryAsJson<ProjectInfo>(zipArchive, ProjectInfoEntryName);
@@ -42,10 +45,20 @@ public class ProjectPersistence
         return result;
     }
 
-    public void SaveProject(TrackDesignProject project, string path)
+    public static void SaveProject(TrackDesignProject project, Stream fileStream)
+    {
+        var zipArchive = new ZipArchive(fileStream, ZipArchiveMode.Update, true);
+        SaveProjectInner(project, zipArchive);
+    }
+
+    public static void SaveProject(TrackDesignProject project, string path)
     {
         var zipArchive = ZipFile.Open(path, ZipArchiveMode.Update, Encoding.UTF8);
+        SaveProjectInner(project, zipArchive);
+    }
 
+    private static void SaveProjectInner(TrackDesignProject project, ZipArchive zipArchive)
+    {
         WriteZipEntry(zipArchive, ProjectInfoEntryName, project.ProjectInfo);
         WriteZipEntry(zipArchive, TrackPiecesEntryName, new TrackPieceLayoutDto(project.TrackPieces));
     }

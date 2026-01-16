@@ -1,8 +1,11 @@
 ﻿using System.ComponentModel;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
+using TrackDesigner.Model;
+using TrackDesigner.Persistence;
 using TrackDesigner.Tools;
 using TrackDesigner.Util;
 using MessageBox = System.Windows.MessageBox;
@@ -12,7 +15,9 @@ namespace TrackDesigner.ViewModels;
 public class RibbonViewModel : INotifyPropertyChanged
 {
     private readonly Action<ITool> _setCurrentTool;
-    private const string TrackDesignFileFilterString = "Track Design files | *.trk";
+
+    private const string TrackDesignFileFilterString =
+        $"{ProjectPersistence.ProjectFileNameString} | *.{ProjectPersistence.ProjectFileExtension}";
 
     private int _horizontalPieceCount;
     private int _verticalPieceCount;
@@ -109,6 +114,36 @@ public class RibbonViewModel : INotifyPropertyChanged
 
     private void SaveDesign()
     {
+        if (TrackDesignProject.Instance is null)
+        {
+            MessageBox.Show("No project to save. Please create a new design project first.");
+            return;
+        }
+
+        var saveFileDialog = new SaveFileDialog
+        {
+            CreatePrompt = true,
+            AddExtension = true,
+            CheckFileExists = true,
+            CheckPathExists = true,
+            DefaultExt = ProjectPersistence.ProjectFileExtension,
+            Filter = TrackDesignFileFilterString,
+            FilterIndex = 1,
+        };
+
+        var dialogResult = saveFileDialog.ShowDialog();
+        if (dialogResult != DialogResult.OK)
+            return;
+
+        // Enforce the expected extension even if the user types a different one.
+        var requiredExt = "." + ProjectPersistence.ProjectFileExtension.TrimStart('.');
+        if (!saveFileDialog.FileName.EndsWith(requiredExt, StringComparison.OrdinalIgnoreCase))
+        {
+            saveFileDialog.FileName = Path.ChangeExtension(saveFileDialog.FileName, requiredExt);
+        }
+
+        using var stream = saveFileDialog.OpenFile();
+        ProjectPersistence.SaveProject(TrackDesignProject.Instance, stream);
     }
 
     private void PrintDesign()
