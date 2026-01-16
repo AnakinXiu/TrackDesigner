@@ -78,11 +78,11 @@
                     <RibbonTwoLineText Text="Track Width" 
                                        VerticalContentAlignment="Center"/>
                     <fluent:TextBox Grid.Row="0" Grid.Column="1"
-                                    Text="{Binding HorizontalPieceCount, Converter={StaticResource IntToStringConverter}}"/>
+                                    Text="{Binding HorizontalPieceCount, Converter={StaticResource IntToStringConverter}, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <RibbonTwoLineText Grid.Row="1" Grid.Column="0" Text="Track Height"/>
                     <fluent:TextBox Grid.Row="1" Grid.Column="1" 
-                                    Text="{Binding VerticalPieceCount,Converter={StaticResource IntToStringConverter}}" />
+                                    Text="{Binding VerticalPieceCount,Converter={StaticResource IntToStringConverter}, UpdateSourceTrigger=PropertyChanged}"/>
 
                 </Grid>
 
